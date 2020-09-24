@@ -1,5 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## NOTES
+Hosted at https://github.com/sinclair-guthrie/winners-queue
+Used gh-pages package and updated lib -> index.js so that it deploys to "external" remote
+
 ## Available Scripts
 
 In the project directory, you can run:
