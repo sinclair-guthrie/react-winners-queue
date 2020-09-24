@@ -17,7 +17,7 @@ class App extends React.Component {
   }
 
   handleSubmit(event) {
-    let url = "http://localhost:3001/request/" + this.state.summName;
+    let url = "https://winners-queue-api.herokuapp.com/request/" + this.state.summName;
     let listDiv = document.getElementById("listArea");
     if (this.state.summName === '') {
       listDiv.innerHTML = "Add a summoner name before submitting!"
