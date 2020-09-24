@@ -24,7 +24,7 @@ class App extends React.Component {
       event.preventDefault();
       return
     }
-    listDiv.innerHTML = "loading";
+    listDiv.innerHTML = "loading...";
     let jsonReq = new XMLHttpRequest();
     jsonReq.responseType = "json";
     jsonReq.open("GET", url);
