@@ -1,38 +1,80 @@
-.App {
+#App {
+  width: 100vw;
+  height: 100vh;
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  color: white;
+  font-size: 20px;
+  letter-spacing: 0.02em;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#App-header {
+  width: 100%;
+  max-width: 1499px;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+#App-header p {
+  max-width: 55ch;
+  text-align: left;
+  line-height: 1.5;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#listArea {
+  width: 100%;
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+#formArea {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#boxLabel {
+  margin-right: 15px;
+}
+
+#submitButton {
+  box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+	background-color:#ffffff;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#666666;
+  font-weight:bold;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+	padding:12px 45px;
+	text-decoration:none;
+  text-shadow:0px 1px 0px #ffffff;
+}
+
+#submitButton:hover {
+  background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+	background-color:#f6f6f6;
+}
+
+#submitButton:active {
+  position:relative;
+	top:1px;
+}
+
+#dataBullets li {
+  margin-bottom: 8px;
 }

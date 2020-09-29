@@ -18,34 +18,42 @@ class App extends React.Component {
 
   handleSubmit(event) {
     let url = "https://winners-queue-api.herokuapp.com/request/" + this.state.summName;
-    let listDiv = document.getElementById("listArea");
+    let loadMsg = document.getElementById("loadMsg");
+    let dataBullets = document.getElementById("dataBullets");
     if (this.state.summName === '') {
-      listDiv.innerHTML = "Add a summoner name before submitting!"
+      loadMsg.innerHTML = "Add a summoner name before submitting!"
       event.preventDefault();
       return
     }
-    listDiv.innerHTML = "loading...";
+    loadMsg.innerHTML = "loading...";
     let jsonReq = new XMLHttpRequest();
     jsonReq.responseType = "json";
     jsonReq.open("GET", url);
     jsonReq.onreadystatechange = () => {
       if (jsonReq.readyState === XMLHttpRequest.DONE) {
-        if (jsonReq.status >= 400) {
-          listDiv.innerHTML = jsonReq.statusText;
+        if (jsonReq.status === 403) {
+          loadMsg.innerHTML = "Forbidden - api key likely needs to be updated";
+          dataBullets.innerHTML = "";
+        } else if (jsonReq.status >= 400) {
+          loadMsg.innerHTML = jsonReq.statusText;
+          dataBullets.innerHTML = "";
         } else if(jsonReq.status === 0) {
-          listDiv.innerHTML = "failed with status code 0 - connection to server likely refused"
+          loadMsg.innerHTML = "Failed with status code 0 - connection to server likely refused";
+          dataBullets.innerHTML = "";
         } else {
-          console.log(jsonReq.response);
           let jsonResp = jsonReq.response;
-          listDiv.innerHTML = "";
-          let newList = document.createElement("ul");
+          loadMsg.innerHTML = "";
+          dataBullets.innerHTML = "";
           jsonResp.matchData.forEach(x => {
+            let roundedX = x;
+            if (typeof x === "number") {
+              roundedX = x.toFixed(2);
+            }
             let listItem = document.createElement("li");
-            let innerText = document.createTextNode("" + x);
+            let innerText = document.createTextNode("" + roundedX);
             listItem.appendChild(innerText);
-            newList.appendChild(listItem);
+            dataBullets.appendChild(listItem);
           })
-          listDiv.appendChild(newList);
         }
       }
     }
@@ -55,21 +63,25 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
+      <div id="App">
+        <header id="App-header">
           <h1>
-            Are you in winner's or loser's queue?
+            League of Legends KDA Analyzer
           </h1>
-          <form onSubmit={this.handleSubmit}>
-            <label>
-              Summoner Name:
-          <input type="text" value={this.state.summName} onChange={this.handleChange} />
-            </label>
-            <input type="submit" value="Submit" />
-          </form>
-          <div id="listArea">
-          </div>
+          <p>
+            Type in your summoner name below and see the KDA difference between you and your lane opponent for the last 10 games. 
+            Currently only works for 5v5 summoner's rift games, non-special game modes.
+          </p>
         </header>
+        <div id="listArea">
+          <form id="formArea" onSubmit={this.handleSubmit}>
+            <label id="boxLabel" for="summoner">Summoner Name: </label>
+            <input id="summoner" type="text" value={this.state.summName} onChange={this.handleChange}/>
+            <input id="submitButton" type="submit" value="Submit"/>
+          </form>
+          <p id="loadMsg"></p>
+          <ul id="dataBullets"></ul>
+        </div>
       </div>
     );
   }
