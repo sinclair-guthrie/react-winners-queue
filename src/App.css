@@ -19,7 +19,7 @@
   box-sizing: border-box;
 }
 
-#App-header {
+#app-header {
   width: 100%;
   max-width: 1499px;
   margin-left: auto;
@@ -30,7 +30,7 @@
   justify-content: center;
 }
 
-#App-header p {
+#app-header p {
   max-width: 55ch;
   text-align: left;
   line-height: 1.5;
@@ -83,4 +83,21 @@
 
 #dataBullets li {
   margin-bottom: 8px;
+}
+
+#app-footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  height: 120px;
+  width: 100%;
+  font-size: 1.3em;
+  text-align: right;
+  line-height: 2;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  padding: 20px;
 }

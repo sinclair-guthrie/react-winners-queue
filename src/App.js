@@ -64,12 +64,13 @@ class App extends React.Component {
   render() {
     return (
       <div id="App">
-        <header id="App-header">
+        <header id="app-header">
           <h1>
-            League of Legends KDA Analyzer
+            League of Legends KDA Analyzer (work in progress)
           </h1>
           <p>
-            Type in your summoner name below and see the KDA difference between you and your lane opponent for the last 10 games. 
+            Type in your summoner name below and see the KDA difference between you and your lane opponent for the last 10 games.
+            Data is pulled from my Node server on Heroku, which chains calls from Riot Games's apis.
             Currently only works for 5v5 summoner's rift games, non-special game modes. Try submitting PVLeviathan as an example.
           </p>
         </header>
@@ -82,6 +83,15 @@ class App extends React.Component {
           <p id="loadMsg"></p>
           <ul id="dataBullets"></ul>
         </div>
+        <footer id="app-footer">
+          <a href="https://github.com/sinclair-guthrie/react-winners-queue" target="_blank" rel="noopener noreferrer">
+            React source repo
+          </a>
+          <br />
+          <a href="https://github.com/sinclair-guthrie/riot-node-server" target="_blank" rel="noopener noreferrer">
+            Node server repo
+          </a>
+        </footer>
       </div>
     );
   }
