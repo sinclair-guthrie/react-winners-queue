@@ -1,9 +1,15 @@
+@font-face {
+  font-family: "Friz Quadrata";
+  src: url("./assets/Friz\ Quadrata\ Regular.ttf");
+}
+
 #App {
   width: 100vw;
   height: 100vh;
   text-align: center;
   background-color: #282c34;
   color: white;
+  font-family: "Friz Quadrata";
   font-size: 20px;
   letter-spacing: 0.02em;
   -webkit-font-smoothing: antialiased;
@@ -32,7 +38,7 @@
 
 #listArea {
   width: 100%;
-  max-width: 350px;
+  max-width: 400px;
   margin-left: auto;
   margin-right: auto;
   text-align: left;
@@ -43,8 +49,8 @@
   flex-flow: row wrap;
 }
 
-#boxLabel {
-  margin-right: 15px;
+#boxLabel, #summoner{
+  width: 50%;
 }
 
 #submitButton {

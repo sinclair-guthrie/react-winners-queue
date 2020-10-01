@@ -70,7 +70,7 @@ class App extends React.Component {
           </h1>
           <p>
             Type in your summoner name below and see the KDA difference between you and your lane opponent for the last 10 games. 
-            Currently only works for 5v5 summoner's rift games, non-special game modes.
+            Currently only works for 5v5 summoner's rift games, non-special game modes. Try submitting PVLeviathan as an example.
           </p>
         </header>
         <div id="listArea">
