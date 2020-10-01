@@ -45,12 +45,21 @@ class App extends React.Component {
           loadMsg.innerHTML = "";
           dataBullets.innerHTML = "";
           jsonResp.matchData.forEach(x => {
-            let roundedX = x;
-            if (typeof x === "number") {
-              roundedX = x.toFixed(2);
-            }
             let listItem = document.createElement("li");
-            let innerText = document.createTextNode("" + roundedX);
+            let innerText;
+            if (typeof x === "string") {
+              innerText = document.createTextNode(x);
+            } else {
+              let roundedX = x.kdaDiff;
+              if (typeof roundedX === "number") {
+                roundedX = x.kdaDiff.toFixed(2);
+              }
+              let matchResult
+              if (x.result === "Fail") {
+                matchResult = "Loss";
+              } else matchResult = "Win";
+              innerText = document.createTextNode("" + roundedX + " - " + matchResult);
+            }
             listItem.appendChild(innerText);
             dataBullets.appendChild(listItem);
           })
@@ -69,7 +78,7 @@ class App extends React.Component {
             League of Legends KDA Analyzer (work in progress)
           </h1>
           <p>
-            Type in your summoner name below and see the KDA difference between you and your lane opponent for the last 10 games.
+            Type in your summoner name below and see the KDA (Kill/Death/Assist ratio) difference between you and your lane opponent for the last 10 games.
             Data is pulled from my Node server on Heroku, which chains calls from Riot Games's apis.
             Currently only works for 5v5 summoner's rift games, non-special game modes. Try submitting PVLeviathan as an example.
           </p>
